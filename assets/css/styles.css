@@ -587,3 +587,12 @@ footer .foot small{ opacity:.85; }
   /* Evita che footer finisca sotto la bottom bar */
   body{ padding-bottom: 88px; }
 }
+
+.hero .container{ padding-left: var(--gutter); padding-right: var(--gutter); }
+@media (max-width: 980px){
+  .hero .container{ padding-left: var(--gutter-tablet); padding-right: var(--gutter-tablet); }
+}
+@media (max-width: 540px){
+  .hero .container{ padding-left: var(--gutter-mobile); padding-right: var(--gutter-mobile); }
+}
+
