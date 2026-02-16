@@ -7,20 +7,26 @@
   --bg:#ffffff;
   --bg-soft:#f6f7f9;
   --text:#1f2328;
-  --muted:#5b6572;
+  --muted:#4f5a67;          /* leggermente più contrasto */
 
-  --blue:#1f3655;      /* coerente logo */
-  --blue-2:#223b5f;
-  --accent:#f4a300;    /* arancio CTA */
+  --blue:#17304f;           /* più profondo = più corporate */
+  --blue-2:#1b3558;
+
+  --accent:#f0a000;         /* arancio meno “sparato” */
+  --accent-2:#ffb21a;       /* hover */
+
   --border:#e6e8eb;
 
   --shadow: 0 10px 30px rgba(0,0,0,.08);
   --radius:16px;
 
   --max:1100px;
+  --gutter: 26px;
 
-  /* Spaziature laterali (risolve "attaccato ai bordi") */
-  --gutter: 26px;          /* desktop */
+  /* extra utili */
+  --wa:#25D366;
+  --wa-border: rgba(37,211,102,.35);
+  --accent-soft: rgba(240,160,0,.14);
 }
 
 /* ---------- Base / Reset ---------- */
@@ -62,14 +68,8 @@ a{ color:inherit; }
 
 /* Badge */
 .badge{
-  display:inline-block;
-  background:rgba(244,163,0,.12);
-  color:var(--blue);
-  border:1px solid rgba(244,163,0,.25);
-  padding:6px 10px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:.85rem;
+  background: var(--accent-soft);
+  color: var(--blue);
 }
 
 /* ---------- Header / Navigation ---------- */
@@ -136,14 +136,14 @@ header{
   transition: transform .12s ease, background .12s ease, border-color .12s ease;
   white-space:nowrap;
 }
-.btn:hover{ transform: translateY(-1px); }
+.btn:hover{ transform: translateY(-0.5px); }
 
 .btn-primary{
-  background:var(--accent);
-  border-color:rgba(244,163,0,.55);
+  background: var(--accent);
+  border-color: rgba(240,160,0,.55);
   color:#1a1a1a;
 }
-.btn-primary:hover{ background:#ffb21a; }
+.btn-primary:hover{ background: var(--accent-2); }
 
 .btn-outline{
   background:#fff;
@@ -166,8 +166,9 @@ header{
 
 /* ---------- Hero ---------- */
 .hero{
-  padding:34px 0 24px;
-  background:linear-gradient(180deg, var(--bg-soft) 0%, #fff 70%);
+  background:
+    radial-gradient(900px 420px at 10% 18%, rgba(240,160,0,.10), transparent 60%),
+    linear-gradient(180deg, var(--bg-soft) 0%, #fff 70%);
 }
 
 .hero-grid{
@@ -221,11 +222,7 @@ header{
 
 /* Hero card (immagine) */
 .hero-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  box-shadow: var(--shadow);
-  overflow:hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
 }
 
 .hero-card img{
@@ -292,11 +289,7 @@ header{
 }
 
 .card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow: 0 8px 18px rgba(0,0,0,.04);
+  box-shadow: 0 14px 30px rgba(0,0,0,.06);
 }
 
 .card h3{
@@ -414,8 +407,8 @@ header{
   box-shadow: var(--shadow);
   font-size:22px;
 }
-.fab.whatsapp{ background:#25D366; color:#fff; }
-.fab.phone{ background:var(--accent); color:#1a1a1a; }
+.fab.whatsapp{ background: var(--wa); color:#fff; }
+.mobile-bar .wa{ background: var(--wa); border-color: var(--wa-border); }
 
 /* ---------- Footer ---------- */
 footer{
