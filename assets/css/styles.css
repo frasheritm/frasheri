@@ -108,6 +108,47 @@ header{
   border-bottom:1px solid var(--border);
   z-index:1000;
 }
+.primary-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* bottone menu: consistente su tutti i device */
+.menu-btn{
+  display:none; /* appare sotto 980px */
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#fff;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  cursor:pointer;
+}
+.menu-btn:hover{ background: var(--bg-soft); }
+.menu-icon{ display:flex; color: var(--blue); }
+
+/* overlay: per mobile menu */
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background: rgba(15,23,42,.45);
+  backdrop-filter: blur(2px);
+  z-index: 900;
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+}
+body.menu-open .nav-overlay{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition: opacity .18s ease, visibility 0s;
+}
 
 .nav{
   position:relative;
@@ -510,11 +551,8 @@ footer .foot small{ opacity:.85; }
  /* header: evita comportamenti strani con fixed su alcuni mobile */
   header{ backdrop-filter:none; }
 
-  .menu-btn{
-    display:inline-flex;
-    position:relative;
-    z-index:1001; /* sempre cliccabile */
-  }
+  /* ✅ mostra pulsante menu */
+  .menu-btn{ display:inline-flex; position:relative; z-index:1001; 
 
   /* overlay: nascosto di default, visibile quando body.menu-open */
   .nav-overlay{
@@ -536,7 +574,7 @@ footer .foot small{ opacity:.85; }
     transition: opacity .18s ease, visibility 0s;
   }
 
-  /* bottom sheet: veramente nascosto quando chiuso */
+   /* bottom sheet menu */
   .nav-links{
     display:flex;
     position:fixed;
@@ -555,19 +593,18 @@ footer .foot small{ opacity:.85; }
 
     z-index:950;
 
-    /* ✅ chiuso = invisibile e non cliccabile */
+    /* ✅ chiuso = invisibile davvero */
     opacity:0;
     visibility:hidden;
     pointer-events:none;
     transform: translateY(18px);
     transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
 
-    /* non coprire mai tutta la pagina */
     max-height: min(70vh, 520px);
     overflow:auto;
   }
 
-  .nav-links::before{
+   .nav-links::before{
     content:"";
     width:44px;
     height:5px;
@@ -577,7 +614,7 @@ footer .foot small{ opacity:.85; }
     flex: 0 0 auto;
   }
 
-  .nav-links.open{
+   .nav-links.open{
     opacity:1;
     visibility:visible;
     pointer-events:auto;
@@ -694,6 +731,8 @@ footer .foot small{ opacity:.85; }
 
 /* Quando menu è aperto: nascondi bottom bar per evitare doppio strato */
 body.menu-open .mobile-bar{ display:none; }
+body.menu-open{ overflow:hidden; }
+
 
 /* FAQ */
 .faq details{
