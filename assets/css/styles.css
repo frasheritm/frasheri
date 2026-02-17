@@ -1,11 +1,12 @@
 /* =========================================================
-   FRASHERI — STYLES (clean, responsive, WhatsApp-first)
+   FRASHERI — STYLES (professional, responsive, WhatsApp-first)
+   Header minimal (Option A): logo + nav only
+   Mobile menu: bottom-sheet + overlay
    ========================================================= */
 
 /* ---------- Design Tokens ---------- */
 :root{
   --bg:#ffffff;
-  --surface:#fbfcfe;
   --bg-soft:#f6f7f9;
 
   --text:#1f2328;
@@ -42,9 +43,8 @@ body{
   color:var(--text);
   background:var(--bg);
   line-height:1.6;
-  padding-bottom:0;
+  padding-bottom:0; /* aumentato su mobile per bottom bar */
 }
-body.menu-open{ overflow:hidden; }
 img{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; }
 .small{ font-size:.95rem; }
@@ -57,7 +57,7 @@ a{ color:inherit; }
   padding-right:var(--gutter);
 }
 
-/* Utility */
+/* Utilities */
 .mt-18{ margin-top:18px; }
 .actions{
   display:flex;
@@ -108,47 +108,6 @@ header{
   border-bottom:1px solid var(--border);
   z-index:1000;
 }
-.primary-nav{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-/* bottone menu: consistente su tutti i device */
-.menu-btn{
-  display:none; /* appare sotto 980px */
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#fff;
-  align-items:center;
-  justify-content:center;
-  padding:0;
-  cursor:pointer;
-}
-.menu-btn:hover{ background: var(--bg-soft); }
-.menu-icon{ display:flex; color: var(--blue); }
-
-/* overlay: per mobile menu */
-.nav-overlay{
-  position:fixed;
-  inset:0;
-  background: rgba(15,23,42,.45);
-  backdrop-filter: blur(2px);
-  z-index: 900;
-
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition: opacity .18s ease, visibility 0s linear .18s;
-}
-body.menu-open .nav-overlay{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transition: opacity .18s ease, visibility 0s;
-}
 
 .nav{
   position:relative;
@@ -159,14 +118,18 @@ body.menu-open .nav-overlay{
   padding-block:12px;
 }
 
-.brand{
+/* ✅ anti-sparizione logo */
+.brand{ flex:0 0 auto; text-decoration:none; display:flex; align-items:center; gap:12px; }
+.brand img{ width:170px; height:auto; display:block; }
+
+/* nav wrapper */
+.primary-nav{
   display:flex;
   align-items:center;
   gap:12px;
-  text-decoration:none;
 }
-.brand img{ width:170px; height:auto; }
 
+/* Desktop: link visibili, hamburger nascosto */
 .nav-links{
   display:flex;
   gap:18px;
@@ -182,13 +145,10 @@ body.menu-open .nav-overlay{
 }
 .nav-links a:hover{ background:var(--bg-soft); }
 
-.nav-cta{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
+/* Header minimal: CTA non in header */
+.nav-cta{ display:none; }
 
-/* Buttons */
+/* Buttons (global) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -233,9 +193,9 @@ body.menu-open .nav-overlay{
   border-color:var(--border);
 }
 
-/* ---------- Menu button (SVG) ---------- */
+/* Menu button (SVG) */
 .menu-btn{
-  display:none; /* attivato nelle media query */
+  display:none; /* visibile sotto 980px */
   width:44px;
   height:44px;
   border-radius:12px;
@@ -249,14 +209,28 @@ body.menu-open .nav-overlay{
 .menu-btn:hover{ background: var(--bg-soft); }
 .menu-icon{ display:flex; color: var(--blue); }
 
-/* Overlay (per menu mobile) */
+/* Overlay (mobile menu) */
 .nav-overlay{
   position:fixed;
   inset:0;
   background: rgba(15,23,42,.45);
   backdrop-filter: blur(2px);
-  z-index: 999;
+  z-index: 900;
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition: opacity .18s ease, visibility 0s linear .18s;
 }
+body.menu-open .nav-overlay{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition: opacity .18s ease, visibility 0s;
+}
+
+/* blocco scroll quando menu aperto */
+body.menu-open{ overflow:hidden; }
 
 /* ---------- Hero ---------- */
 .hero{
@@ -354,10 +328,7 @@ body.menu-open .nav-overlay{
 }
 
 /* ---------- Sections ---------- */
-.section{
-  padding:54px 0;
-  background: var(--surface);
-}
+.section{ padding:54px 0; background:transparent; }
 .section.alt{ background:var(--bg-soft); }
 
 .section h2{
@@ -365,7 +336,7 @@ body.menu-open .nav-overlay{
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
   color:var(--blue);
   letter-spacing:-.01em;
-  line-height: 1.15;
+  line-height:1.15;
 }
 .section .lead{
   margin:0 0 18px;
@@ -537,6 +508,7 @@ footer .foot small{ opacity:.85; }
    RESPONSIVE
    ========================================================= */
 
+/* Tablet + down */
 @media (max-width: 980px){
   :root{ --gutter:22px; }
 
@@ -548,39 +520,17 @@ footer .foot small{ opacity:.85; }
   .gallery{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
 
- /* header: evita comportamenti strani con fixed su alcuni mobile */
-  header{ backdrop-filter:none; }
+  /* ✅ hamburger visibile */
+  .menu-btn{ display:inline-flex; position:relative; z-index:1001; }
 
-  /* ✅ mostra pulsante menu */
-  .menu-btn{ display:inline-flex; position:relative; z-index:1001; 
+  /* ✅ link desktop nascosti */
+  .nav-links{ display:none; }
 
-  /* overlay: nascosto di default, visibile quando body.menu-open */
-  .nav-overlay{
-    position:fixed;
-    inset:0;
-    background: rgba(15,23,42,.45);
-    backdrop-filter: blur(2px);
-    z-index:900;
-
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition: opacity .18s ease, visibility 0s linear .18s;
-  }
-  body.menu-open .nav-overlay{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transition: opacity .18s ease, visibility 0s;
-  }
-
-   /* bottom sheet menu */
-  .nav-links{
+  /* ✅ bottom sheet quando aperto */
+  .nav-links.open{
     display:flex;
     position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
+    left:0; right:0; bottom:0;
 
     padding: 14px var(--gutter) calc(14px + env(safe-area-inset-bottom));
     gap:8px;
@@ -590,59 +540,39 @@ footer .foot small{ opacity:.85; }
     border-top:1px solid var(--border);
     border-radius: 18px 18px 0 0;
     box-shadow: 0 -18px 50px rgba(0,0,0,.18);
-
-    z-index:950;
-
-    /* ✅ chiuso = invisibile davvero */
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transform: translateY(18px);
-    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    z-index: 950;
 
     max-height: min(70vh, 520px);
     overflow:auto;
   }
 
-   .nav-links::before{
+  .nav-links.open::before{
     content:"";
     width:44px;
     height:5px;
     border-radius:999px;
     background: rgba(15,23,42,.14);
     margin: 6px auto 10px;
-    flex: 0 0 auto;
+    flex:0 0 auto;
   }
 
-   .nav-links.open{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transform: translateY(0);
-    transition: opacity .18s ease, transform .18s ease, visibility 0s;
-  }
-
-  .nav-links a{
+  .nav-links.open a{
     padding:14px 12px;
     border-radius:14px;
     font-size:1.05rem;
     background: var(--bg-soft);
     border:1px solid var(--border);
   }
-  .nav-links a:hover{ background:#fff; }
+  .nav-links.open a:hover{ background:#fff; }
 }
-}
-
 
 /* Mobile */
 @media (max-width: 540px){
   :root{ --gutter:34px; }
 
-  /* Header: CTA via bottom bar */
-  .nav-cta{ display:none; }
   .brand img{
-    width: clamp(150px, 38vw, 190px);
-    height: auto;
+    width: clamp(160px, 40vw, 200px);
+    height:auto;
   }
 
   /* Hero */
@@ -729,12 +659,10 @@ footer .foot small{ opacity:.85; }
   body{ padding-bottom: 88px; }
 }
 
-/* Quando menu è aperto: nascondi bottom bar per evitare doppio strato */
+/* Quando menu è aperto: nascondi bottom bar */
 body.menu-open .mobile-bar{ display:none; }
-body.menu-open{ overflow:hidden; }
 
-
-/* FAQ */
+/* ---------- FAQ ---------- */
 .faq details{
   background:#fff;
   border:1px solid var(--hairline);
