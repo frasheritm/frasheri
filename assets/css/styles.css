@@ -603,7 +603,10 @@ footer .foot small{ opacity:.85; }
 
   /* Header: CTA via bottom bar */
   .nav-cta{ display:none; }
-  .brand img{ width:152px; }
+  .brand img{
+    width: clamp(150px, 38vw, 190px);
+    height: auto;
+  }
 
   /* Hero */
   .hero{ padding:28px 0 20px; }
