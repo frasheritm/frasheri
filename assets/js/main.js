@@ -1,6 +1,7 @@
 (() => {
   const btn = document.querySelector('[data-menu-btn]');
   const links = document.querySelector('[data-nav-links]');
+  const overlay = document.querySelector('[data-nav-overlay]');
 
   if (btn && links) {
     if (!links.id) links.id = 'primary-nav';
@@ -10,6 +11,11 @@
     const setOpen = (open) => {
       links.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', String(open));
+
+      if (overlay) overlay.hidden = !open;
+
+      document.body.classList.toggle('menu-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     };
 
     btn.addEventListener('click', () => {
@@ -20,10 +26,7 @@
       a.addEventListener('click', () => setOpen(false))
     );
 
-    document.addEventListener('click', (e) => {
-      const inside = links.contains(e.target) || btn.contains(e.target);
-      if (!inside) setOpen(false);
-    });
+    if (overlay) overlay.addEventListener('click', () => setOpen(false));
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') setOpen(false);
