@@ -18,6 +18,10 @@
       document.body.style.overflow = open ? 'hidden' : '';
     };
 
+    // ✅ forza menu chiuso al load (anti stato ripristinato / bfcache)
+    setOpen(false);
+    window.addEventListener('pageshow', () => setOpen(false));
+
     btn.addEventListener('click', () => {
       setOpen(!links.classList.contains('open'));
     });
