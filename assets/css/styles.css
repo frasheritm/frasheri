@@ -222,8 +222,13 @@ header{
 
 /* Hero card (immagine) */
 .hero-card{
+  background:#fff;
+  border:1px solid rgba(15, 23, 42, .08);
+  border-radius: var(--radius);
+  overflow:hidden;
   box-shadow: 0 18px 40px rgba(0,0,0,.08);
 }
+
 
 .hero-card img{
   width:100%;
@@ -289,8 +294,13 @@ header{
 }
 
 .card{
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, .08); /* più elegante di border pieno */
+  border-radius: calc(var(--radius) - 2px);
+  padding: 22px;
   box-shadow: 0 14px 30px rgba(0,0,0,.06);
 }
+
 
 .card h3{
   margin:0 0 8px;
