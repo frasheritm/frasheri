@@ -10,32 +10,34 @@
 
     const setOpen = (open) => {
       links.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', String(open));
-
-      if (overlay) overlay.hidden = !open;
-
       document.body.classList.toggle('menu-open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
     };
 
-    // ✅ forza menu chiuso al load (anti stato ripristinato / bfcache)
+    // stato iniziale SEMPRE chiuso (anche con back/forward cache)
     setOpen(false);
     window.addEventListener('pageshow', () => setOpen(false));
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       setOpen(!links.classList.contains('open'));
     });
 
+    // chiudi quando clicchi un link
     links.querySelectorAll('a').forEach(a =>
       a.addEventListener('click', () => setOpen(false))
     );
 
+    // chiudi cliccando overlay
     if (overlay) overlay.addEventListener('click', () => setOpen(false));
 
+    // chiudi con ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') setOpen(false);
     });
 
+    // se passi a desktop/tablet grande, chiudi
     window.addEventListener('resize', () => setOpen(false));
   }
 
