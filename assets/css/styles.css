@@ -495,7 +495,6 @@ footer .foot small{ opacity:.85; }
    RESPONSIVE
    ========================================================= */
 
-/* Tablet + down */
 @media (max-width: 980px){
   :root{ --gutter:22px; }
 
@@ -507,12 +506,12 @@ footer .foot small{ opacity:.85; }
   .gallery{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
 
-  /* show menu button, switch to bottom sheet */
+  /* ✅ mostra pulsante menu */
   .menu-btn{ display:inline-flex; }
 
-  /* bottom sheet */
+  /* ✅ bottom sheet menu */
   .nav-links{
-    display:flex;               /* rimane flex */
+    display:flex;
     position:fixed;
     left:0;
     right:0;
@@ -529,9 +528,11 @@ footer .foot small{ opacity:.85; }
 
     transform: translateY(110%);
     transition: transform .18s ease;
+
+    /* ✅ hardening: quando chiuso non intercetta i tap */
+    pointer-events:none;
   }
 
-  /* handle (pillolina) */
   .nav-links::before{
     content:"";
     width:44px;
@@ -541,9 +542,11 @@ footer .foot small{ opacity:.85; }
     margin: 6px auto 10px;
   }
 
-  .nav-links.open{ transform: translateY(0); }
+  .nav-links.open{
+    transform: translateY(0);
+    pointer-events:auto;
+  }
 
-  /* links: touch friendly */
   .nav-links a{
     padding:14px 12px;
     border-radius:14px;
@@ -552,11 +555,8 @@ footer .foot small{ opacity:.85; }
     border:1px solid var(--border);
   }
   .nav-links a:hover{ background:#fff; }
-
-  /* CTA desktop rimangono OK su tablet, ma puoi anche nasconderle:
-     se vuoi lasciarle, commenta la riga sotto */
-  /* .nav-cta{ display:none; } */
 }
+
 
 /* Mobile */
 @media (max-width: 540px){
