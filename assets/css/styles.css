@@ -44,6 +44,7 @@ body{
   line-height:1.6;
   padding-bottom:0;
 }
+body.menu-open{ overflow:hidden; }
 img{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; }
 .small{ font-size:.95rem; }
@@ -506,16 +507,43 @@ footer .foot small{ opacity:.85; }
   .gallery{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
 
-  /* ✅ mostra pulsante menu */
-  .menu-btn{ display:inline-flex; }
+ /* header: evita comportamenti strani con fixed su alcuni mobile */
+  header{ backdrop-filter:none; }
 
-  /* ✅ bottom sheet menu */
+  .menu-btn{
+    display:inline-flex;
+    position:relative;
+    z-index:1001; /* sempre cliccabile */
+  }
+
+  /* overlay: nascosto di default, visibile quando body.menu-open */
+  .nav-overlay{
+    position:fixed;
+    inset:0;
+    background: rgba(15,23,42,.45);
+    backdrop-filter: blur(2px);
+    z-index:900;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition: opacity .18s ease, visibility 0s linear .18s;
+  }
+  body.menu-open .nav-overlay{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transition: opacity .18s ease, visibility 0s;
+  }
+
+  /* bottom sheet: veramente nascosto quando chiuso */
   .nav-links{
     display:flex;
     position:fixed;
     left:0;
     right:0;
     bottom:0;
+
     padding: 14px var(--gutter) calc(14px + env(safe-area-inset-bottom));
     gap:8px;
     flex-direction:column;
@@ -524,13 +552,19 @@ footer .foot small{ opacity:.85; }
     border-top:1px solid var(--border);
     border-radius: 18px 18px 0 0;
     box-shadow: 0 -18px 50px rgba(0,0,0,.18);
-    z-index: 1000;
 
-    transform: translateY(110%);
-    transition: transform .18s ease;
+    z-index:950;
 
-    /* ✅ hardening: quando chiuso non intercetta i tap */
+    /* ✅ chiuso = invisibile e non cliccabile */
+    opacity:0;
+    visibility:hidden;
     pointer-events:none;
+    transform: translateY(18px);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+
+    /* non coprire mai tutta la pagina */
+    max-height: min(70vh, 520px);
+    overflow:auto;
   }
 
   .nav-links::before{
@@ -540,11 +574,15 @@ footer .foot small{ opacity:.85; }
     border-radius:999px;
     background: rgba(15,23,42,.14);
     margin: 6px auto 10px;
+    flex: 0 0 auto;
   }
 
   .nav-links.open{
-    transform: translateY(0);
+    opacity:1;
+    visibility:visible;
     pointer-events:auto;
+    transform: translateY(0);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s;
   }
 
   .nav-links a{
@@ -555,6 +593,7 @@ footer .foot small{ opacity:.85; }
     border:1px solid var(--border);
   }
   .nav-links a:hover{ background:#fff; }
+}
 }
 
 
