@@ -62,7 +62,7 @@ a{ color:inherit; }
 .actions{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   align-items:center;
 }
 
@@ -105,8 +105,9 @@ header{
   top:0;
   background:rgba(255,255,255,.92);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom:1px solid var(--border);
-  z-index:2000; /* ✅ più alto per evitare layer strani */
+  z-index:2000;
 }
 
 .nav{
@@ -118,7 +119,7 @@ header{
   padding-block:12px;
 }
 
-/* ✅ logo non deve mai sparire */
+/* logo */
 .brand{
   flex:0 0 auto;
   text-decoration:none;
@@ -130,6 +131,13 @@ header{
   width:170px;
   height:auto;
   display:block;
+}
+
+/* nav wrapper */
+.primary-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 /* Desktop nav links */
@@ -218,6 +226,7 @@ header{
   inset:0;
   background: rgba(15,23,42,.45);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index:2400;
 
   opacity:0;
@@ -225,10 +234,6 @@ header{
   pointer-events:none;
   transition: opacity .18s ease, visibility 0s linear .18s;
 }
-
-/* se usi hidden nel markup, deve sparire davvero */
-.nav-overlay[hidden]{ display:none !important; }
-
 body.menu-open .nav-overlay{
   opacity:1;
   visibility:visible;
@@ -441,32 +446,6 @@ body.menu-open{ overflow:hidden; }
   max-width:68ch;
 }
 
-/* Gallery */
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
-}
-.gallery figure{
-  margin:0;
-  border:1px solid var(--hairline);
-  border-radius: calc(var(--radius) - 2px);
-  overflow:hidden;
-  background:#fff;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
-}
-.gallery img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-.gallery figcaption{
-  padding:10px 12px;
-  color:var(--muted);
-  font-weight:800;
-  font-size:.92rem;
-}
-
 /* ---------- Floating Buttons (desktop/tablet) ---------- */
 .floating{
   position:fixed;
@@ -519,22 +498,30 @@ footer .foot small{ opacity:.85; }
 @media (max-width: 980px){
   :root{ --gutter:22px; }
 
+  /* IMPORTANTISSIMO:
+     su alcuni browser il backdrop-filter sull'header rompe i fixed dei figli.
+     Lo disattiviamo su tablet/mobile. */
+  header{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:#fff;
+  }
+
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-card img{ height:260px; }
 
   .grid3{ grid-template-columns: 1fr; }
   .kpis{ grid-template-columns: 1fr 1fr; }
-  .gallery{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
 
-  /* ✅ hamburger visibile */
+  /* hamburger visibile */
   .menu-btn{
     display:inline-flex;
     position:relative;
-    z-index:2601; /* sopra overlay */
+    z-index:2601; /* sopra overlay e sheet */
   }
 
-  /* ✅ menu bottom-sheet (sempre), chiuso = fuori schermo */
+  /* bottom-sheet menu: SEMPRE fixed, ma chiuso = invisibile */
   .nav-links{
     position:fixed;
     left:0;
@@ -542,10 +529,14 @@ footer .foot small{ opacity:.85; }
     bottom:0;
     top:auto;
 
-    z-index:2500; /* sopra overlay */
+    z-index:2500;
     display:flex;
-    flex-direction:column; /* ✅ evita inversioni */
-    gap:8px;
+    flex-direction:column;
+    gap:10px;
+
+    /* override desktop */
+    align-items:stretch;  /* ✅ niente bottoni stretti e centrati */
+    margin:0;
 
     padding: 14px var(--gutter) calc(14px + env(safe-area-inset-bottom));
     background:#fff;
@@ -557,10 +548,13 @@ footer .foot small{ opacity:.85; }
     overflow:auto;
     -webkit-overflow-scrolling: touch;
 
+    /* stato chiuso */
     transform: translateY(110%);
-    transition: transform .18s ease;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 
-    pointer-events:none; /* chiuso = non intercetta tap */
+    transition: transform .18s ease, opacity .18s ease, visibility 0s linear .18s;
   }
 
   .nav-links::before{
@@ -575,11 +569,16 @@ footer .foot small{ opacity:.85; }
 
   .nav-links.open{
     transform: translateY(0);
+    opacity:1;
+    visibility:visible;
     pointer-events:auto;
+    transition: transform .18s ease, opacity .18s ease, visibility 0s;
   }
 
   .nav-links a{
     display:block;
+    width:100%;
+    text-align:center;
     padding:14px 12px;
     border-radius:14px;
     font-size:1.05rem;
@@ -640,6 +639,7 @@ footer .foot small{ opacity:.85; }
     padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
     background: rgba(255,255,255,.96);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--border);
     z-index: 1000;
   }
