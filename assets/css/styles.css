@@ -624,5 +624,20 @@ a:focus-visible, button:focus-visible {
 
 .nav { position: relative; }
 
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;              /* distanza tra i bottoni */
+  align-items:center;
+}
+
+@media (max-width: 540px){
+  .cta-row .btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+
 
 
