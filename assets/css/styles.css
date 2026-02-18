@@ -712,3 +712,15 @@ body.menu-open .mobile-bar{ display:none; }
   html{ scroll-behavior:auto; }
   *{ transition:none !important; }
 }
+
+.icon{
+  width:20px;
+  height:20px;
+  display:inline-block;
+  vertical-align:middle;
+}
+.fab .icon{
+  width:24px;
+  height:24px;
+}
+
