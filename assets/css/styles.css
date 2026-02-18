@@ -189,7 +189,7 @@ header{
   box-shadow: 0 10px 22px rgba(0,0,0,.10);
 }
 .btn-wa:hover{ background: var(--wa-hover); }
-.btn-wa .icon{ filter: brightness(0) invert(1); } /* icona bianca anche se svg è scuro */
+.btn-wa .icon{ filter: none; } /* icona bianca anche se svg è scuro */
 
 /* CTA Telefono (sempre bianco + icona nera) */
 .btn-call{
