@@ -31,7 +31,9 @@
   --gutter:26px;
 
   --wa:#25D366;
+  --wa-hover:#1fbf5a; /* leggermente più scuro */
   --wa-border: rgba(37,211,102,.35);
+  --phone-text:#111;  /* colore icona testo chiama */
 }
 
 /* ---------- Base / Reset ---------- */
@@ -178,6 +180,26 @@ header{
 }
 .btn:hover{ transform: translateY(-0.5px); }
 .btn:active{ transform: translateY(0); }
+
+/* CTA WhatsApp (sempre verde) */
+.btn-wa{
+  background: var(--wa);
+  border-color: var(--wa-border);
+  color:#fff;
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+}
+.btn-wa:hover{ background: var(--wa-hover); }
+.btn-wa .icon{ filter: brightness(0) invert(1); } /* icona bianca anche se svg è scuro */
+
+/* CTA Telefono (sempre bianco + icona nera) */
+.btn-call{
+  background:#fff;
+  border-color: rgba(23,48,79,.25);
+  color: var(--phone-text);
+}
+.btn-call:hover{ background: rgba(23,48,79,.06); }
+.btn-call .icon{ filter:none; } /* usa il tuo svg nero */
+
 
 .btn-primary{
   background:var(--accent);
