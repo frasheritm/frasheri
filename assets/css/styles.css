@@ -485,8 +485,8 @@ body.no-scroll{
   .mobile-menu{ display:none; }
 
   .hero{
-    min-height: 74vh;
-    align-items: flex-end; /* desktop come prima */
+    min-height: 64vh;
+    align-items: flex-start; /* desktop come prima */
     padding-bottom: 90px;
   }
   .hero__cta{ flex-direction: row; align-items:center; }
