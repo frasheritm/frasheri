@@ -21,7 +21,6 @@
         <img class="brand__logo" src="assets/img/logo.png" alt="Frasheri trasporti e montaggi" />
       </a>
 
-      <!-- Desktop nav (apparirà solo su desktop) -->
       <nav class="nav nav--desktop" aria-label="Menu principale">
         <a class="nav__link" href="#servizi">Servizi</a>
         <a class="nav__link" href="#galleria">Galleria</a>
@@ -29,7 +28,6 @@
         <a class="nav__link nav__link--cta" href="#preventivo">Preventivo</a>
       </nav>
 
-      <!-- Mobile: solo hamburger -->
       <div class="header__actions" aria-label="Menu">
         <button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobileMenu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -37,7 +35,7 @@
       </div>
     </div>
 
-    <!-- Menu mobile (solo voci) -->
+    <!-- Menu mobile fullscreen + backdrop -->
     <div class="mobile-menu" id="mobileMenu" hidden>
       <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
         <div class="mobile-menu__top">
@@ -50,6 +48,8 @@
         <a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a>
         <a class="mobile-menu__link mobile-menu__link--cta" href="#preventivo">Preventivo</a>
       </div>
+
+      <button class="mobile-menu__backdrop" id="backdrop" aria-label="Chiudi menu"></button>
     </div>
   </header>
 
@@ -66,9 +66,7 @@
           <span class="pill pill--muted">Fuori regione su richiesta</span>
         </div>
 
-        <h1 class="hero__title">
-          Trasporti, montaggi e piccoli traslochi in Abruzzo
-        </h1>
+        <h1 class="hero__title">Trasporti, montaggi e piccoli traslochi in Abruzzo</h1>
 
         <p class="hero__subtitle">
           Per privati e aziende. Preventivo chiaro e veloce: scrivici su WhatsApp (anche con foto).
@@ -80,12 +78,6 @@
             Preventivo WhatsApp
           </a>
           <a class="btn btn--secondary btn--lg" href="#preventivo">Richiedi preventivo</a>
-        </div>
-
-        <div class="hero__trust">
-          <div class="trust-item"><span class="trust-item__k">✔</span><span class="trust-item__t">Risposta rapida</span></div>
-          <div class="trust-item"><span class="trust-item__k">✔</span><span class="trust-item__t">Cura e protezioni</span></div>
-          <div class="trust-item"><span class="trust-item__k">✔</span><span class="trust-item__t">Organizzazione chiara</span></div>
         </div>
       </div>
 
@@ -151,28 +143,9 @@
             <div class="step__body">
               <div class="step__titleRow">
                 <h3 class="step__title">Ci scrivi su WhatsApp</h3>
-
-                <button
-                  class="info-btn"
-                  type="button"
-                  id="waInfoBtn"
-                  aria-label="Info su cosa inviare su WhatsApp"
-                  aria-controls="waInfo"
-                  aria-expanded="false"
-                >i</button>
+                <button class="info-btn" type="button" id="waInfoBtn" aria-label="Cosa inviare su WhatsApp">i</button>
               </div>
-
               <p class="step__text">Zona, cosa serve e (se puoi) 1–3 foto. Ti guidiamo noi.</p>
-
-              <div class="tooltip" id="waInfo" role="note" hidden>
-                <strong>Cosa inviare:</strong>
-                <ul>
-                  <li>Zona ritiro + destinazione</li>
-                  <li>Servizio richiesto</li>
-                  <li>Foto (se possibile)</li>
-                  <li>Data desiderata</li>
-                </ul>
-              </div>
             </div>
           </div>
 
@@ -273,7 +246,7 @@
       <div class="container">
         <header class="section__header">
           <h2 class="section__title">Preventivo rapido</h2>
-          <p class="section__subtitle">Compila e invia su WhatsApp (puoi allegare foto direttamente in chat).</p>
+          <p class="section__subtitle">Compila e invia su WhatsApp. In alternativa puoi inviare una mail.</p>
         </header>
 
         <div class="quote">
@@ -329,12 +302,9 @@
                 Invia su WhatsApp
               </button>
 
-              <button class="btn btn--ghost btn--lg" type="button" id="copyBtn">Copia testo</button>
-
-              <a class="btn btn--secondary btn--lg" id="callBtn" href="#">
-                <img src="assets/img/phone.svg" alt="" width="20" height="20" />
-                Chiama
-              </a>
+              <button class="btn btn--secondary btn--lg" type="button" id="emailBtn">
+                Invia email
+              </button>
             </div>
 
             <p class="form__hint" id="hint">
@@ -355,6 +325,27 @@
       </div>
     </section>
   </main>
+
+  <!-- POPUP INFO WhatsApp -->
+  <div class="modal" id="waModal" hidden>
+    <button class="modal__backdrop" id="waModalClose1" aria-label="Chiudi popup"></button>
+
+    <div class="modal__sheet" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+      <div class="modal__header">
+        <h3 class="modal__title" id="waModalTitle">Cosa inviare su WhatsApp</h3>
+        <button class="icon-btn icon-btn--sm" id="waModalClose2" aria-label="Chiudi popup">✕</button>
+      </div>
+
+      <ul class="modal__list">
+        <li>Zona ritiro + destinazione</li>
+        <li>Servizio richiesto</li>
+        <li>Foto (se possibile)</li>
+        <li>Data desiderata</li>
+      </ul>
+
+      <p class="modal__note">Più info mandi, più preciso sarà il preventivo.</p>
+    </div>
+  </div>
 
   <!-- Bottom bar mobile -->
   <div class="bottom-bar" aria-label="Azioni rapide">
