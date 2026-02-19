@@ -35,22 +35,25 @@
       </div>
     </div>
 
-    <!-- Menu mobile fullscreen + backdrop -->
-    <div class="mobile-menu" id="mobileMenu" hidden>
-  <button class="mobile-menu__backdrop" id="backdrop" aria-label="Chiudi menu"></button>
+    <!-- Drawer menu (mobile) -->
+<div class="drawer" id="mobileMenu" hidden>
+  <button class="drawer__overlay" id="drawerOverlay" aria-label="Chiudi menu"></button>
 
-  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
-    <div class="mobile-menu__top">
-      <span class="mobile-menu__title">Menu</span>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
+    <div class="drawer__top">
+      <span class="drawer__title">Menu</span>
       <button class="icon-btn icon-btn--sm" id="closeMenu" aria-label="Chiudi menu">✕</button>
     </div>
 
-    <a class="mobile-menu__link" href="#servizi">Servizi</a>
-    <a class="mobile-menu__link" href="#galleria">Galleria</a>
-    <a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a>
-    <a class="mobile-menu__link mobile-menu__link--cta" href="#preventivo">Preventivo</a>
+    <nav class="drawer__nav" aria-label="Navigazione mobile">
+      <a class="drawer__link" href="#servizi">Servizi</a>
+      <a class="drawer__link" href="#galleria">Galleria</a>
+      <a class="drawer__link" href="#chi-siamo">Chi siamo</a>
+      <a class="drawer__link drawer__link--cta" href="#preventivo">Preventivo</a>
+    </nav>
   </div>
 </div>
+
 
   </header>
 
