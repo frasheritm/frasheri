@@ -38,21 +38,14 @@ function setLink(el, href) {
 function wireQuickLinks() {
   const phoneHref = `tel:${CONFIG.PHONE_NUMBER_TEL}`;
 
-  // Phone
-  setLink(document.getElementById("headerPhone"), phoneHref);
-  setLink(document.getElementById("menuPhone"), phoneHref);
-  setLink(document.getElementById("sidePhone"), phoneHref);
+  // Phone: bottom bar + call button
   setLink(document.getElementById("bottomPhone"), phoneHref);
   setLink(document.getElementById("callBtn"), phoneHref);
 
-  // WhatsApp (messaggio base)
+  // WhatsApp: hero + bottom bar
   const waHref = buildWhatsAppLink(defaultMessage());
-
-  setLink(document.getElementById("headerWhatsApp"), waHref);
-  setLink(document.getElementById("menuWhatsApp"), waHref);
-  setLink(document.getElementById("sideWhatsApp"), waHref);
-  setLink(document.getElementById("bottomWhatsApp"), waHref);
   setLink(document.getElementById("heroWhatsApp"), waHref);
+  setLink(document.getElementById("bottomWhatsApp"), waHref);
 }
 
 function sanitize(value) {
@@ -113,7 +106,6 @@ function wireMobileMenu() {
   const burger = document.getElementById("burger");
   const menu = document.getElementById("mobileMenu");
   const closeBtn = document.getElementById("closeMenu");
-  const backdrop = document.getElementById("backdrop");
 
   if (!burger || !menu) return;
 
@@ -131,14 +123,42 @@ function wireMobileMenu() {
 
   burger.addEventListener("click", open);
   closeBtn?.addEventListener("click", close);
-  backdrop?.addEventListener("click", close);
 
+  // Chiudi menu quando clicchi un link
   menu.querySelectorAll("a[href^='#']").forEach(a => {
     a.addEventListener("click", () => close());
   });
 
+  // ESC per chiudere
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !menu.hidden) close();
+  });
+}
+
+/* =========================
+   TOOLTIP INFO (WhatsApp)
+   ========================= */
+function wireWhatsAppInfo() {
+  const btn = document.getElementById("waInfoBtn");
+  const tip = document.getElementById("waInfo");
+  if (!btn || !tip) return;
+
+  const toggle = () => {
+    const isOpen = !tip.hidden;
+    tip.hidden = isOpen;
+    btn.setAttribute("aria-expanded", String(!isOpen));
+  };
+
+  btn.addEventListener("click", toggle);
+
+  // Chiudi cliccando fuori
+  document.addEventListener("click", (e) => {
+    if (tip.hidden) return;
+    const target = e.target;
+    if (!tip.contains(target) && target !== btn) {
+      tip.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
   });
 }
 
@@ -188,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (y) y.textContent = new Date().getFullYear();
 
   wireMobileMenu();
+  wireWhatsAppInfo();
   wireQuickLinks();
   wireQuoteForm();
 });
