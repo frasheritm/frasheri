@@ -1,8 +1,5 @@
-/* =========================
-   CONFIG (EDITA QUI)
-   ========================= */
 const CONFIG = {
-  // SOLO numeri, senza +, spazi o trattini. Esempio: 393331234567
+  // SOLO numeri, senza +, spazi o trattini. Es: 393331234567
   WHATSAPP_NUMBER: "39XXXXXXXXXX",
 
   // tel: con + (apre tastiera con numero precompilato)
@@ -37,12 +34,8 @@ function setLink(el, href) {
 
 function wireQuickLinks() {
   const phoneHref = `tel:${CONFIG.PHONE_NUMBER_TEL}`;
-
-  // Phone: bottom bar + call button
   setLink(document.getElementById("bottomPhone"), phoneHref);
-  setLink(document.getElementById("callBtn"), phoneHref);
 
-  // WhatsApp: hero + bottom bar
   const waHref = buildWhatsAppLink(defaultMessage());
   setLink(document.getElementById("heroWhatsApp"), waHref);
   setLink(document.getElementById("bottomWhatsApp"), waHref);
@@ -65,47 +58,29 @@ function buildFormMessage(formData) {
   const telefono = sanitize(formData.get("telefono"));
   const descrizione = sanitize(formData.get("descrizione"));
 
-  const lines = [
-    "Ciao! Vorrei un preventivo.",
-    servizio ? `Servizio: ${servizio}` : "Servizio: ",
-    zona ? `Zona ritiro: ${zona}` : "Zona ritiro: ",
-    destinazione ? `Destinazione: ${destinazione}` : "Destinazione: ",
-    data ? `Data: ${data}` : "Data: ",
-    telefono ? `Telefono: ${telefono}` : "Telefono: ",
-    descrizione ? `Dettagli: ${descrizione}` : "Dettagli: ",
-    "",
-    "Posso allegare foto in chat."
-  ];
+  const lines = [];
 
-  if (nome) lines.unshift(`Ciao, sono ${nome}.`);
+  if (nome) lines.push(`Ciao, sono ${nome}.`);
+  lines.push("Vorrei un preventivo:");
+  lines.push("");
+  lines.push(`• Servizio: ${servizio || "-"}`);
+  lines.push(`• Zona ritiro: ${zona || "-"}`);
+  lines.push(`• Destinazione: ${destinazione || "-"}`);
+  lines.push(`• Data: ${data || "-"}`);
+  lines.push(`• Telefono: ${telefono || "-"}`);
+  lines.push(`• Dettagli: ${descrizione || "-"}`);
+  lines.push("");
+  lines.push("Posso allegare foto in chat.");
+
   return lines.join("\n");
 }
 
-async function copyToClipboard(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch (e) {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    const ok = document.execCommand("copy");
-    document.body.removeChild(ta);
-    return ok;
-  }
-}
-
-/* =========================
-   MENU MOBILE
-   ========================= */
+/* MENU MOBILE */
 function wireMobileMenu() {
   const burger = document.getElementById("burger");
   const menu = document.getElementById("mobileMenu");
   const closeBtn = document.getElementById("closeMenu");
+  const backdrop = document.getElementById("backdrop");
 
   if (!burger || !menu) return;
 
@@ -123,52 +98,49 @@ function wireMobileMenu() {
 
   burger.addEventListener("click", open);
   closeBtn?.addEventListener("click", close);
+  backdrop?.addEventListener("click", close);
 
-  // Chiudi menu quando clicchi un link
   menu.querySelectorAll("a[href^='#']").forEach(a => {
     a.addEventListener("click", () => close());
   });
 
-  // ESC per chiudere
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !menu.hidden) close();
   });
 }
 
-/* =========================
-   TOOLTIP INFO (WhatsApp)
-   ========================= */
-function wireWhatsAppInfo() {
-  const btn = document.getElementById("waInfoBtn");
-  const tip = document.getElementById("waInfo");
-  if (!btn || !tip) return;
+/* POPUP INFO WhatsApp */
+function wireWhatsAppModal() {
+  const openBtn = document.getElementById("waInfoBtn");
+  const modal = document.getElementById("waModal");
+  const close1 = document.getElementById("waModalClose1");
+  const close2 = document.getElementById("waModalClose2");
 
-  const toggle = () => {
-    const isOpen = !tip.hidden;
-    tip.hidden = isOpen;
-    btn.setAttribute("aria-expanded", String(!isOpen));
+  if (!openBtn || !modal) return;
+
+  const open = () => {
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  };
+  const close = () => {
+    modal.hidden = true;
+    document.body.style.overflow = "";
   };
 
-  btn.addEventListener("click", toggle);
+  openBtn.addEventListener("click", open);
+  close1?.addEventListener("click", close);
+  close2?.addEventListener("click", close);
 
-  // Chiudi cliccando fuori
-  document.addEventListener("click", (e) => {
-    if (tip.hidden) return;
-    const target = e.target;
-    if (!tip.contains(target) && target !== btn) {
-      tip.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-    }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) close();
   });
 }
 
-/* =========================
-   FORM -> WHATSAPP
-   ========================= */
+/* FORM -> WhatsApp + Email */
 function wireQuoteForm() {
   const form = document.getElementById("quoteForm");
-  const copyBtn = document.getElementById("copyBtn");
   const hint = document.getElementById("hint");
+  const emailBtn = document.getElementById("emailBtn");
 
   if (!form) return;
 
@@ -188,27 +160,23 @@ function wireQuoteForm() {
     window.open(link, "_blank", "noopener,noreferrer");
   });
 
-  copyBtn?.addEventListener("click", async () => {
+  emailBtn?.addEventListener("click", () => {
     const data = new FormData(form);
     const message = buildFormMessage(data);
-    const ok = await copyToClipboard(message);
 
-    hint.textContent = ok
-      ? "Testo copiato! Ora puoi incollarlo su WhatsApp."
-      : "Non riesco a copiare automaticamente: seleziona e copia manualmente.";
-    hint.style.color = ok ? "" : "#b00020";
+    const subject = "Richiesta preventivo - Frasheri";
+    const mailto = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    window.location.href = mailto;
   });
 }
 
-/* =========================
-   INIT
-   ========================= */
 document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
   wireMobileMenu();
-  wireWhatsAppInfo();
+  wireWhatsAppModal();
   wireQuickLinks();
   wireQuoteForm();
 });
