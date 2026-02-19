@@ -10,12 +10,6 @@
 
   <link rel="preload" as="image" href="assets/img/hero.webp" />
   <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <!-- Open Graph (opzionale) -->
-  <meta property="og:title" content="Frasheri Trasporti e Montaggi | Abruzzo" />
-  <meta property="og:description" content="Trasporti, montaggi e piccoli traslochi in Abruzzo. Preventivo rapido via WhatsApp." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/img/hero.webp" />
 </head>
 
 <body>
@@ -27,6 +21,7 @@
         <img class="brand__logo" src="assets/img/logo.png" alt="Frasheri trasporti e montaggi" />
       </a>
 
+      <!-- Desktop nav (apparirà solo su desktop) -->
       <nav class="nav nav--desktop" aria-label="Menu principale">
         <a class="nav__link" href="#servizi">Servizi</a>
         <a class="nav__link" href="#galleria">Galleria</a>
@@ -34,45 +29,27 @@
         <a class="nav__link nav__link--cta" href="#preventivo">Preventivo</a>
       </nav>
 
-      <div class="header__actions" aria-label="Azioni rapide">
-        <a class="icon-btn" id="headerWhatsApp" href="#" aria-label="Apri WhatsApp">
-          <img src="assets/img/whatsapp.svg" alt="" width="22" height="22" />
-        </a>
-        <a class="icon-btn" id="headerPhone" href="#" aria-label="Chiama">
-          <img src="assets/img/phone.svg" alt="" width="22" height="22" />
-        </a>
-
+      <!-- Mobile: solo hamburger -->
+      <div class="header__actions" aria-label="Menu">
         <button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobileMenu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
 
-    <!-- Menu mobile -->
+    <!-- Menu mobile (solo voci) -->
     <div class="mobile-menu" id="mobileMenu" hidden>
       <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
         <div class="mobile-menu__top">
           <span class="mobile-menu__title">Menu</span>
-          <button class="icon-btn" id="closeMenu" aria-label="Chiudi menu">✕</button>
+          <button class="icon-btn icon-btn--sm" id="closeMenu" aria-label="Chiudi menu">✕</button>
         </div>
 
         <a class="mobile-menu__link" href="#servizi">Servizi</a>
         <a class="mobile-menu__link" href="#galleria">Galleria</a>
         <a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a>
         <a class="mobile-menu__link mobile-menu__link--cta" href="#preventivo">Preventivo</a>
-
-        <div class="mobile-menu__quick">
-          <a class="btn btn--primary" id="menuWhatsApp" href="#">
-            <img src="assets/img/whatsapp.svg" alt="" width="18" height="18" />
-            WhatsApp
-          </a>
-          <a class="btn btn--ghost" id="menuPhone" href="#">
-            <img src="assets/img/phone.svg" alt="" width="18" height="18" />
-            Chiama
-          </a>
-        </div>
       </div>
-      <div class="mobile-menu__backdrop" id="backdrop" aria-hidden="true"></div>
     </div>
   </header>
 
@@ -120,7 +97,7 @@
       <div class="container">
         <header class="section__header">
           <h2 class="section__title">Servizi principali</h2>
-          <p class="section__subtitle">Tre servizi chiari, senza confusione. Ti diciamo subito cosa serve per il preventivo.</p>
+          <p class="section__subtitle">Tre servizi chiari, senza confusione. Preventivo rapido via WhatsApp.</p>
         </header>
 
         <div class="grid grid--3">
@@ -132,7 +109,6 @@
               <li>Gestione appuntamenti</li>
               <li>Fuori regione su richiesta</li>
             </ul>
-            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
           </article>
 
           <article class="card">
@@ -143,7 +119,6 @@
               <li>Interventi rapidi</li>
               <li>Soluzioni pratiche</li>
             </ul>
-            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
           </article>
 
           <article class="card">
@@ -154,8 +129,11 @@
               <li>Organizzazione semplice</li>
               <li>In Abruzzo</li>
             </ul>
-            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
           </article>
+        </div>
+
+        <div class="section__cta">
+          <a class="btn btn--secondary btn--lg" href="#preventivo">Richiedi un preventivo</a>
         </div>
       </div>
     </section>
@@ -165,17 +143,39 @@
       <div class="container">
         <header class="section__header">
           <h2 class="section__title">Come lavoriamo</h2>
-          <p class="section__subtitle">WhatsApp + foto → preventivo → intervento.</p>
         </header>
 
         <div class="steps">
           <div class="step">
             <div class="step__num">1</div>
             <div class="step__body">
-              <h3 class="step__title">Ci scrivi su WhatsApp</h3>
+              <div class="step__titleRow">
+                <h3 class="step__title">Ci scrivi su WhatsApp</h3>
+
+                <button
+                  class="info-btn"
+                  type="button"
+                  id="waInfoBtn"
+                  aria-label="Info su cosa inviare su WhatsApp"
+                  aria-controls="waInfo"
+                  aria-expanded="false"
+                >i</button>
+              </div>
+
               <p class="step__text">Zona, cosa serve e (se puoi) 1–3 foto. Ti guidiamo noi.</p>
+
+              <div class="tooltip" id="waInfo" role="note" hidden>
+                <strong>Cosa inviare:</strong>
+                <ul>
+                  <li>Zona ritiro + destinazione</li>
+                  <li>Servizio richiesto</li>
+                  <li>Foto (se possibile)</li>
+                  <li>Data desiderata</li>
+                </ul>
+              </div>
             </div>
           </div>
+
           <div class="step">
             <div class="step__num">2</div>
             <div class="step__body">
@@ -183,6 +183,7 @@
               <p class="step__text">Risposta con proposta semplice e data possibile.</p>
             </div>
           </div>
+
           <div class="step">
             <div class="step__num">3</div>
             <div class="step__body">
@@ -224,7 +225,7 @@
       </div>
     </section>
 
-    <!-- GALLERIA (placeholder) -->
+    <!-- GALLERIA -->
     <section class="section section--alt" id="galleria">
       <div class="container">
         <header class="section__header">
@@ -236,10 +237,6 @@
           <figure class="gallery__item"><img src="assets/img/hero.webp" alt="Mezzo Frasheri - trasporti" loading="lazy" /></figure>
           <figure class="gallery__item"><img src="assets/img/hero.webp" alt="Trasporto e montaggio - esempio" loading="lazy" /></figure>
           <figure class="gallery__item"><img src="assets/img/hero.webp" alt="Piccolo trasloco - esempio" loading="lazy" /></figure>
-        </div>
-
-        <div class="center">
-          <a class="btn btn--secondary" href="#preventivo">Vuoi un preventivo? →</a>
         </div>
       </div>
     </section>
@@ -350,29 +347,8 @@
               <h3 class="contact__title">Contatti</h3>
               <p class="contact__text">
                 Email: <a href="mailto:info@frasheri.it">info@frasheri.it</a><br />
-                Abruzzo (PE/CH) • Fuori regione su richiesta
+                Abruzzo (Pescara / Chieti) • Fuori regione su richiesta
               </p>
-
-              <div class="contact__cta">
-                <a class="btn btn--primary" id="sideWhatsApp" href="#">
-                  <img src="assets/img/whatsapp.svg" alt="" width="18" height="18" />
-                  WhatsApp
-                </a>
-                <a class="btn btn--ghost" id="sidePhone" href="#">
-                  <img src="assets/img/phone.svg" alt="" width="18" height="18" />
-                  Chiama
-                </a>
-              </div>
-            </div>
-
-            <div class="contact__box contact__box--note">
-              <h3 class="contact__title">Cosa inviare su WhatsApp</h3>
-              <ul class="list">
-                <li>Zona ritiro + destinazione</li>
-                <li>Servizio richiesto</li>
-                <li>Foto (se possibile)</li>
-                <li>Data desiderata</li>
-              </ul>
             </div>
           </aside>
         </div>
