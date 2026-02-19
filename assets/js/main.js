@@ -8,6 +8,7 @@ const CONFIG = {
   EMAIL: "info@frasheri.it"
 };
 
+
 function buildWhatsAppLink(message) {
   const base = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
   const text = encodeURIComponent(message);
