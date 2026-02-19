@@ -2,18 +2,16 @@
    CONFIG (EDITA QUI)
    ========================= */
 const CONFIG = {
-  // Inserisci SOLO numeri, senza +, spazi o trattini.
-  // Esempio Italia: 393331234567
+  // SOLO numeri, senza +, spazi o trattini. Esempio: 393331234567
   WHATSAPP_NUMBER: "39XXXXXXXXXX",
 
-  // Per tel: usa formato internazionale con +
+  // tel: con + (apre tastiera con numero precompilato)
   PHONE_NUMBER_TEL: "+39XXXXXXXXXX",
 
   EMAIL: "info@frasheri.it"
 };
 
 function buildWhatsAppLink(message) {
-  // Formato ufficiale: https://wa.me/<number>?text=<encoded>
   const base = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
   const text = encodeURIComponent(message);
   return `${base}?text=${text}`;
@@ -62,9 +60,7 @@ function sanitize(value) {
 }
 
 function formatDate(isoDate) {
-  if (!isoDate) return "";
-  // Manteniamo semplice: YYYY-MM-DD
-  return isoDate;
+  return isoDate || "";
 }
 
 function buildFormMessage(formData) {
@@ -88,9 +84,7 @@ function buildFormMessage(formData) {
     "Posso allegare foto in chat."
   ];
 
-  // Se nome esiste, mettiamo un saluto più umano
   if (nome) lines.unshift(`Ciao, sono ${nome}.`);
-
   return lines.join("\n");
 }
 
@@ -99,7 +93,6 @@ async function copyToClipboard(text) {
     await navigator.clipboard.writeText(text);
     return true;
   } catch (e) {
-    // Fallback
     const ta = document.createElement("textarea");
     ta.value = text;
     ta.style.position = "fixed";
@@ -140,12 +133,10 @@ function wireMobileMenu() {
   closeBtn?.addEventListener("click", close);
   backdrop?.addEventListener("click", close);
 
-  // Chiudi menu quando clicchi un link
   menu.querySelectorAll("a[href^='#']").forEach(a => {
     a.addEventListener("click", () => close());
   });
 
-  // ESC per chiudere
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !menu.hidden) close();
   });
@@ -165,7 +156,7 @@ function wireQuoteForm() {
     e.preventDefault();
 
     if (!CONFIG.WHATSAPP_NUMBER || CONFIG.WHATSAPP_NUMBER.includes("X")) {
-      hint.textContent = "Configura il numero WhatsApp in main.js (CONFIG.WHATSAPP_NUMBER).";
+      hint.textContent = "Configura il numero WhatsApp in assets/js/main.js (CONFIG.WHATSAPP_NUMBER).";
       hint.style.color = "#b00020";
       return;
     }
@@ -174,7 +165,6 @@ function wireQuoteForm() {
     const message = buildFormMessage(data);
     const link = buildWhatsAppLink(message);
 
-    // Apri WhatsApp
     window.open(link, "_blank", "noopener,noreferrer");
   });
 
@@ -183,13 +173,10 @@ function wireQuoteForm() {
     const message = buildFormMessage(data);
     const ok = await copyToClipboard(message);
 
-    if (ok) {
-      hint.textContent = "Testo copiato! Ora puoi incollarlo su WhatsApp.";
-      hint.style.color = "";
-    } else {
-      hint.textContent = "Non riesco a copiare automaticamente: seleziona e copia il testo manualmente.";
-      hint.style.color = "#b00020";
-    }
+    hint.textContent = ok
+      ? "Testo copiato! Ora puoi incollarlo su WhatsApp."
+      : "Non riesco a copiare automaticamente: seleziona e copia manualmente.";
+    hint.style.color = ok ? "" : "#b00020";
   });
 }
 
@@ -197,15 +184,10 @@ function wireQuoteForm() {
    INIT
    ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-  // Year
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
   wireMobileMenu();
-
-  // Link rapidi
   wireQuickLinks();
-
-  // Form preventivo
   wireQuoteForm();
 });
