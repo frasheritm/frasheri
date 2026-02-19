@@ -76,39 +76,45 @@ function buildFormMessage(formData) {
   return lines.join("\n");
 }
 
-/* MENU MOBILE */
 function wireMobileMenu() {
   const burger = document.getElementById("burger");
-  const menu = document.getElementById("mobileMenu");
+  const drawer = document.getElementById("mobileMenu");
   const closeBtn = document.getElementById("closeMenu");
-  const backdrop = document.getElementById("backdrop");
+  const overlay = document.getElementById("drawerOverlay");
 
-  if (!burger || !menu) return;
+  if (!burger || !drawer) return;
 
   const open = () => {
-    menu.hidden = false;
+    drawer.hidden = false;
+    drawer.classList.add("is-open");
     burger.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("no-scroll");
   };
 
   const close = () => {
-    menu.hidden = true;
+    drawer.classList.remove("is-open");
     burger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
+    document.body.classList.remove("no-scroll");
+
+    // aspetta la fine dell'animazione
+    window.setTimeout(() => {
+      drawer.hidden = true;
+    }, 230);
   };
 
   burger.addEventListener("click", open);
   closeBtn?.addEventListener("click", close);
-  backdrop?.addEventListener("click", close);
+  overlay?.addEventListener("click", close);
 
-  menu.querySelectorAll("a[href^='#']").forEach(a => {
-    a.addEventListener("click", () => close());
+  drawer.querySelectorAll("a[href^='#']").forEach(a => {
+    a.addEventListener("click", close);
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menu.hidden) close();
+    if (e.key === "Escape" && !drawer.hidden) close();
   });
 }
+
 
 /* POPUP INFO WhatsApp */
 function wireWhatsAppModal() {
