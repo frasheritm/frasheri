@@ -3,392 +3,433 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Frasheri Trasporti e Montaggi | Montaggi e Trasporti in Abruzzo</title>
+  <meta name="theme-color" content="#172C4B" />
+  <meta name="description" content="Frasheri Trasporti e Montaggi: trasporti, montaggi e piccoli traslochi in Abruzzo (Pescara e Chieti). Preventivo rapido via WhatsApp." />
 
-  <meta name="description" content="Montaggi e trasporti professionali in Abruzzo. Interventi rapidi su Pescara, Chieti, Teramo e L’Aquila. Contattaci su WhatsApp o telefono per un preventivo." />
-  <link rel="canonical" href="https://frasheri.it/" />
+  <title>Frasheri Trasporti e Montaggi | Abruzzo</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Frasheri Trasporti e Montaggi" />
-  <meta property="og:description" content="Montaggi e trasporti in Abruzzo. Preventivo rapido via WhatsApp." />
+  <link rel="preload" as="image" href="assets/hero.webp" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph (opzionale) -->
+  <meta property="og:title" content="Frasheri Trasporti e Montaggi | Abruzzo" />
+  <meta property="og:description" content="Trasporti, montaggi e piccoli traslochi in Abruzzo. Preventivo rapido via WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://frasheri.it/" />
-  <meta property="og:image" content="https://frasheri.it/assets/img/og.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-
-  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>
-<a class="skip" href="#contenuto">Vai al contenuto</a>
 
-<header>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="index.html" aria-label="Frasheri - Home">
-        <img src="assets/img/logo.png" alt="Frasheri trasporti e montaggi" width="170" height="60">
+<body>
+  <!-- Skip link (accessibilità) -->
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Vai alla home">
+        <img class="brand__logo" src="assets/logo.png" alt="Frasheri trasporti e montaggi" />
       </a>
 
-      <nav class="primary-nav" aria-label="Navigazione principale">
-        <button class="menu-btn" type="button" data-menu-btn aria-label="Apri menu">
-          <span class="menu-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M4 7h16M4 12h16M4 17h16"></path>
-            </svg>
-          </span>
-        </button>
-
-        <div class="nav-links" data-nav-links>
-          <a href="servizi.html">Servizi</a>
-          <a href="lavori.html">Lavori</a>
-          <a href="chi-siamo.html">Chi siamo</a>
-          <a href="contatti.html">Contatti</a>
-        </div>
-
-        <div class="nav-overlay" data-nav-overlay aria-hidden="true"></div>
+      <nav class="nav nav--desktop" aria-label="Menu principale">
+        <a class="nav__link" href="#servizi">Servizi</a>
+        <a class="nav__link" href="#galleria">Galleria</a>
+        <a class="nav__link" href="#chi-siamo">Chi siamo</a>
+        <a class="nav__link nav__link--cta" href="#preventivo">Preventivo</a>
       </nav>
+
+      <div class="header__actions" aria-label="Azioni rapide">
+        <a class="icon-btn" id="headerWhatsApp" href="#" aria-label="Apri WhatsApp">
+          <img src="assets/whatsapp.svg" alt="" width="22" height="22" />
+        </a>
+        <a class="icon-btn" id="headerPhone" href="#" aria-label="Chiama">
+          <img src="assets/phone.svg" alt="" width="22" height="22" />
+        </a>
+
+        <button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
 
-
-
-<main id="contenuto">
-
-  <!-- HERO (conversion first) -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <span class="badge">Abruzzo • Interventi rapidi</span>
-          <h1>Montaggi e Trasporti <br>Professionali in Abruzzo</h1>
-
-          <p class="muted">
-            Operiamo su <strong>Pescara</strong>, <strong>Chieti</strong>, <strong>Teramo</strong> e <strong>L’Aquila</strong>.
-            Preventivo rapido: inviaci <strong>foto + misure + località</strong> su WhatsApp.
-          </p>
-
-          <div class="hero-actions">
-
-  <a class="btn btn-wa"
-     href="https://wa.me/39XXXXXXXXXX"
-     target="_blank" rel="noopener">
-
-    <img src="assets/img/whatsapp.svg" class="icon" alt="">
-    Scrivici su WhatsApp
-  </a>
-
-  <a class="btn btn-call" href="tel:+39XXXXXXXXXX">
-
-    <img src="assets/img/phone.svg" class="icon" alt="">
-    Chiama subito
-  </a>
-
-  <a class="btn btn-ghost" href="lavori.html">Vedi lavori →</a>
-
-</div>
-
-
-          <p class="small muted" style="margin-top:12px">
-            📩 Tip: su WhatsApp allega 2 foto e le misure: ti rispondiamo più velocemente.
-          </p>
-
-          <div class="pills">
-            <div class="pill">✔ Puntualità</div>
-            <div class="pill">✔ Cura e sicurezza</div>
-            <div class="pill">✔ Soluzioni su misura</div>
-          </div>
-
-          <div class="kpis" aria-label="Indicatori">
-            <div class="kpi"><div class="n">10+</div><div class="l">anni di esperienza</div></div>
-            <div class="kpi"><div class="n">24h</div><div class="l">risposta rapida</div></div>
-            <div class="kpi"><div class="n">Abruzzo</div><div class="l">copertura regionale</div></div>
-            <div class="kpi"><div class="n">Sicurezza</div><div class="l">cura materiali</div></div>
-          </div>
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
+        <div class="mobile-menu__top">
+          <span class="mobile-menu__title">Menu</span>
+          <button class="icon-btn" id="closeMenu" aria-label="Chiudi menu">
+            ✕
+          </button>
         </div>
 
-        <aside class="hero-card" aria-label="Immagine">
-          <img src="assets/img/hero.webp" alt="Trasporto e montaggio in sicurezza" loading="eager">
-          <div class="cap">
-            <strong>Richiesta veloce</strong>
-            <div class="muted small">
-              Inviaci <strong>foto + misure</strong> su WhatsApp e ti rispondiamo con un preventivo.
+        <a class="mobile-menu__link" href="#servizi">Servizi</a>
+        <a class="mobile-menu__link" href="#galleria">Galleria</a>
+        <a class="mobile-menu__link" href="#chi-siamo">Chi siamo</a>
+        <a class="mobile-menu__link mobile-menu__link--cta" href="#preventivo">Preventivo</a>
+
+        <div class="mobile-menu__quick">
+          <a class="btn btn--primary" id="menuWhatsApp" href="#">
+            <img src="assets/whatsapp.svg" alt="" width="18" height="18" />
+            WhatsApp
+          </a>
+          <a class="btn btn--ghost" id="menuPhone" href="#">
+            <img src="assets/phone.svg" alt="" width="18" height="18" />
+            Chiama
+          </a>
+        </div>
+      </div>
+      <div class="mobile-menu__backdrop" id="backdrop" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-label="Sezione principale">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <div class="hero__badge">
+          <span class="pill">Abruzzo</span>
+          <span class="pill pill--muted">Pescara</span>
+          <span class="pill pill--muted">Chieti</span>
+          <span class="pill pill--muted">Fuori regione su richiesta</span>
+        </div>
+
+        <h1 class="hero__title">
+          Trasporti, montaggi e piccoli traslochi in Abruzzo
+        </h1>
+
+        <p class="hero__subtitle">
+          Per privati e aziende. Preventivo chiaro e veloce: scrivici su WhatsApp (anche con foto).
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" id="heroWhatsApp" href="#">
+            <img src="assets/whatsapp.svg" alt="" width="20" height="20" />
+            Preventivo WhatsApp
+          </a>
+          <a class="btn btn--secondary btn--lg" href="#preventivo">
+            Richiedi preventivo
+          </a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="trust-item">
+            <span class="trust-item__k">✔</span>
+            <span class="trust-item__t">Risposta rapida</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-item__k">✔</span>
+            <span class="trust-item__t">Cura e protezioni</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-item__k">✔</span>
+            <span class="trust-item__t">Organizzazione chiara</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#servizi" aria-label="Scorri ai servizi">
+        Scopri i servizi ↓
+      </a>
+    </section>
+
+    <!-- SERVIZI -->
+    <section class="section" id="servizi">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Servizi principali</h2>
+          <p class="section__subtitle">Tre servizi chiari, senza confusione. Ti diciamo subito cosa serve per il preventivo.</p>
+        </header>
+
+        <div class="grid grid--3">
+          <article class="card">
+            <h3 class="card__title">Trasporti</h3>
+            <p class="card__text">Trasporto di mobili, elettrodomestici, colli e materiali per privati e aziende.</p>
+            <ul class="list">
+              <li>Ritiro e consegna</li>
+              <li>Gestione appuntamenti</li>
+              <li>Fuori regione su richiesta</li>
+            </ul>
+            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Montaggi</h3>
+            <p class="card__text">Montaggio e posizionamento mobili con attenzione ai dettagli e agli spazi.</p>
+            <ul class="list">
+              <li>Smontaggio/Rimontaggio</li>
+              <li>Interventi rapidi</li>
+              <li>Soluzioni pratiche</li>
+            </ul>
+            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Piccoli traslochi</h3>
+            <p class="card__text">Ideale per singole stanze, piccoli appartamenti o pochi pezzi selezionati.</p>
+            <ul class="list">
+              <li>Con o senza montaggi</li>
+              <li>Organizzazione semplice</li>
+              <li>In Abruzzo</li>
+            </ul>
+            <a class="card__link" href="#preventivo">Chiedi preventivo →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COME LAVORIAMO -->
+    <section class="section section--alt" id="processo">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Come lavoriamo</h2>
+          <p class="section__subtitle">Il modo più veloce: WhatsApp + foto → preventivo → intervento.</p>
+        </header>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div class="step__body">
+              <h3 class="step__title">Ci scrivi su WhatsApp</h3>
+              <p class="step__text">Zona, cosa serve e (se puoi) 1–3 foto. Ti guidiamo noi su cosa inviare.</p>
             </div>
           </div>
-        </aside>
-      </div>
-    </div>
-  </section>
 
-  <!-- SERVIZI (SEO + fiducia) -->
-  <section class="section">
-    <div class="container">
-      <h2>Servizi principali</h2>
-      <p class="lead">Interventi chiari, organizzati e con attenzione alla sicurezza.</p>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Montaggi</h3>
-          <p>Assemblaggio e installazione di strutture, arredi e attrezzature. Lavoro preciso e pulito.</p>
-          <div class="hr"></div>
-          <a href="servizi.html#montaggi">Dettagli montaggi →</a>
-        </div>
-
-        <div class="card">
-          <h3>Trasporti</h3>
-          <p>Trasporto sicuro di materiali e merci. Pianificazione e gestione carico/scarico.</p>
-          <div class="hr"></div>
-          <a href="servizi.html#trasporti">Dettagli trasporti →</a>
-        </div>
-
-        <div class="card">
-          <h3>Movimentazione</h3>
-          <p>Supporto a spostamenti e posizionamenti in cantiere o magazzino, con massima cautela.</p>
-          <div class="hr"></div>
-          <a href="servizi.html#movimentazione">Dettagli movimentazione →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COME FUNZIONA -->
-  <section class="section alt" id="come-funziona">
-  <div class="container">
-    <h2>Come funziona</h2>
-    <p class="lead">Tre passi, zero stress. Preventivo veloce su WhatsApp.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-n">1</div>
-        <div>
-          <h3>Invia foto e misure</h3>
-          <p class="muted">WhatsApp: foto + misure + località + piano/ascensore.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-n">2</div>
-        <div>
-          <h3>Ricevi il preventivo</h3>
-          <p class="muted">Ti rispondiamo rapidamente con disponibilità e prezzo.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-n">3</div>
-        <div>
-          <h3>Trasporto e montaggio</h3>
-          <p class="muted">Arriviamo, proteggiamo, trasportiamo e montiamo (se richiesto).</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  
-  <!-- ZONE SERVITE (SEO local) -->
-  <section class="section alt">
-    <div class="container">
-      <h2>Zone servite</h2>
-      <p class="lead">Abruzzo: Pescara, Chieti, Teramo, L’Aquila (e aree limitrofe).</p>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Pescara</h3>
-          <p>Interventi rapidi su Pescara e provincia.</p>
-        </div>
-        <div class="card">
-          <h3>Chieti</h3>
-          <p>Servizi su Chieti e zona costiera/interna.</p>
-        </div>
-        <div class="card">
-          <h3>Teramo & L’Aquila</h3>
-          <p>Disponibilità su Teramo e L’Aquila in base alle richieste.</p>
-        </div>
-      </div>
-
-      <div class="actions mt-18">
-        <a class="btn btn-wa" href="https://wa.me/39XXXXXXXXXX?text=..." target="_blank" rel="noopener">
-        <img src="assets/img/whatsapp.svg" class="icon" alt=""> Preventivo via WhatsApp
-        </a>
-        <a class="btn btn-outline" href="contatti.html">📍 Contatti</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROVA SOCIALE / FIDUCIA -->
-  <section class="section">
-    <div class="container two-col">
-      <div>
-        <h2>Perché scegliere Frasheri</h2>
-        <p class="lead">Poche promesse, fatti concreti. Comunicazione diretta e responsabilità sul lavoro.</p>
-        <ul class="list">
-          <li>Preventivi chiari e rapidi</li>
-          <li>Attenzione alla sicurezza e alla cura dei materiali</li>
-          <li>Flessibilità su orari e urgenze</li>
-          <li>Esperienza sul campo</li>
-        </ul>
-      </div>
-
-      <div class="contact-box">
-        <h3>Contatto immediato</h3>
-        <p>WhatsApp è il modo più veloce: inviaci foto + misure + località e ti rispondiamo rapidamente.</p>
-        <div class="contact-actions">
-          <a class="btn btn-wa"
-             href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Frasheri,%20vorrei%20un%20preventivo.%20Localit%C3%A0:%20____%20Data:%20____%20Dettagli:%20____"
-             target="_blank" rel="noopener"><img src="assets/img/whatsapp.svg" class="icon" alt=""> WhatsApp</a>
-          <a class="btn btn-call" href="tel:+39XXXXXXXXXX"><img src="assets/img/phone.svg" class="icon" alt=""> Telefono</a>
-          <a class="btn btn-outline" href="contatti.html">📍 Contatti</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RECENSIONI -->
-  <section class="section" id="recensioni">
-  <div class="container">
-    <h2>Recensioni</h2>
-    <p class="lead">Affidabilità e cura: quello che conta davvero.</p>
-
-    <div class="reviews">
-      <figure class="review">
-        <div class="stars">★★★★★</div>
-        <blockquote>“Puntuali e precisi. Montaggio perfetto e trasporto in sicurezza.”</blockquote>
-        <figcaption>— Cliente (Pescara)</figcaption>
-      </figure>
-
-      <figure class="review">
-        <div class="stars">★★★★★</div>
-        <blockquote>“Preventivo rapido su WhatsApp e lavoro pulito. Consigliati.”</blockquote>
-        <figcaption>— Cliente (Chieti)</figcaption>
-      </figure>
-
-      <figure class="review">
-        <div class="stars">★★★★★</div>
-        <blockquote>“Disponibili e attenti ai dettagli. Ottimo servizio.”</blockquote>
-        <figcaption>— Cliente (Teramo)</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-  
-  <!-- FAQ (SEO + GEO) -->
-  <section class="section alt">
-    <div class="container">
-      <h2>Domande frequenti</h2>
-      <p class="lead">Risposte rapide alle richieste più comuni (utile anche per Google e risultati AI).</p>
-
-      <div class="faq">
-        <details>
-          <summary>In quali zone dell’Abruzzo operate?</summary>
-          <div class="faq-body">
-            Operiamo principalmente su Pescara, Chieti, Teramo e L’Aquila, e valutiamo anche aree limitrofe in base al lavoro.
+          <div class="step">
+            <div class="step__num">2</div>
+            <div class="step__body">
+              <h3 class="step__title">Preventivo chiaro</h3>
+              <p class="step__text">Ti rispondiamo con una proposta semplice e una data possibile.</p>
+            </div>
           </div>
-        </details>
 
-        <details>
-          <summary>Come posso ottenere un preventivo veloce?</summary>
-          <div class="faq-body">
-            Scrivici su WhatsApp inviando 2 foto, misure, località e data desiderata. Ti rispondiamo rapidamente con una stima.
+          <div class="step">
+            <div class="step__num">3</div>
+            <div class="step__body">
+              <h3 class="step__title">Eseguiamo il lavoro</h3>
+              <p class="step__text">Trasporto, montaggio o piccolo trasloco con organizzazione e cura.</p>
+            </div>
           </div>
-        </details>
-
-        <details>
-          <summary>Fate anche montaggi oltre al trasporto?</summary>
-          <div class="faq-body">
-            Sì. Offriamo montaggi e installazioni oltre al trasporto: possiamo gestire il servizio completo.
-          </div>
-        </details>
-
-        <details>
-          <summary>Quanto tempo ci mettete a rispondere?</summary>
-          <div class="faq-body">
-            In genere rispondiamo entro 24 ore (spesso prima), soprattutto tramite WhatsApp.
-          </div>
-        </details>
+        </div>
       </div>
+    </section>
 
-      <div class="actions mt-18">
-        <a class="btn btn-wa" href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Frasheri,%20ho%20bisogno%20di%20____%20in%20____%20(Abruzzo).%20Posso%20inviarvi%20foto%20e%20misure%3F" target="_blank" rel="noopener"><img src="assets/img/whatsapp.svg" class="icon" alt=""> Scrivi ora su WhatsApp</a>
+    <!-- COPERTURA -->
+    <section class="section" id="copertura">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Operiamo in tutto l’Abruzzo</h2>
+          <p class="section__subtitle">Pescara e Chieti come aree principali. Anche fuori regione su richiesta.</p>
+        </header>
+
+        <div class="coverage">
+          <div class="coverage__box">
+            <h3 class="coverage__title">Province</h3>
+            <ul class="chips">
+              <li class="chip">Pescara (PE)</li>
+              <li class="chip">Chieti (CH)</li>
+              <li class="chip">L’Aquila (AQ)</li>
+              <li class="chip">Teramo (TE)</li>
+            </ul>
+          </div>
+
+          <div class="coverage__box">
+            <h3 class="coverage__title">Orari</h3>
+            <p class="coverage__text">
+              <strong>Lun–Dom</strong> (in base a disponibilità).<br />
+              Consigliato: scrivi su WhatsApp con foto e zona.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- GALLERIA (preview) -->
+    <section class="section section--alt" id="galleria">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Galleria</h2>
+          <p class="section__subtitle">Qui puoi inserire foto di trasporti, montaggi e lavori completati (anche poche, ma reali).</p>
+        </header>
 
-<!-- Floating (desktop/tablet) -->
-<div class="floating" aria-label="Contatti rapidi">
+        <div class="gallery">
+          <figure class="gallery__item">
+            <img src="assets/hero.webp" alt="Mezzo Frasheri - trasporti" loading="lazy" />
+          </figure>
+          <figure class="gallery__item">
+            <img src="assets/hero.webp" alt="Trasporto e montaggio - esempio" loading="lazy" />
+          </figure>
+          <figure class="gallery__item">
+            <img src="assets/hero.webp" alt="Piccolo trasloco - esempio" loading="lazy" />
+          </figure>
+        </div>
 
-  <a class="fab whatsapp"
-     href="https://wa.me/39XXXXXXXXXX"
-     target="_blank" rel="noopener"
-     aria-label="WhatsApp">
+        <div class="center">
+          <a class="btn btn--secondary" href="#preventivo">Vuoi un preventivo? →</a>
+        </div>
+      </div>
+    </section>
 
-    <img src="assets/img/whatsapp.svg" class="icon" alt="">
-  </a>
+    <!-- CHI SIAMO -->
+    <section class="section" id="chi-siamo">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Chi siamo</h2>
+          <p class="section__subtitle">
+            Frasheri Trasporti e Montaggi lavora con privati e aziende in Abruzzo. Puntiamo su comunicazione chiara, organizzazione e attenzione ai dettagli.
+          </p>
+        </header>
 
-  <a class="fab phone"
-     href="tel:+39XXXXXXXXXX"
-     aria-label="Telefono">
+        <div class="grid grid--3">
+          <article class="mini">
+            <h3 class="mini__title">Affidabilità</h3>
+            <p class="mini__text">Accordi chiari e gestione ordinata di tempi e consegne.</p>
+          </article>
+          <article class="mini">
+            <h3 class="mini__title">Cura</h3>
+            <p class="mini__text">Trattiamo mobili e colli con attenzione e protezioni quando necessario.</p>
+          </article>
+          <article class="mini">
+            <h3 class="mini__title">Chiarezza</h3>
+            <p class="mini__text">Preventivo semplice: sai cosa aspettarti, senza giri di parole.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <img src="assets/img/phone.svg" class="icon" alt="">
-  </a>
+    <!-- PREVENTIVO -->
+    <section class="section section--alt" id="preventivo">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Preventivo rapido</h2>
+          <p class="section__subtitle">Compila 20 secondi e invia tutto su WhatsApp (puoi allegare foto direttamente in chat).</p>
+        </header>
 
-</div>
+        <div class="quote">
+          <form class="form" id="quoteForm">
+            <div class="form__row">
+              <label class="field">
+                <span class="field__label">Nome</span>
+                <input class="field__input" type="text" name="nome" placeholder="Il tuo nome" autocomplete="name" />
+              </label>
 
+              <label class="field">
+                <span class="field__label">Servizio</span>
+                <select class="field__input" name="servizio">
+                  <option value="Trasporto">Trasporto</option>
+                  <option value="Montaggio">Montaggio</option>
+                  <option value="Piccolo trasloco">Piccolo trasloco</option>
+                </select>
+              </label>
+            </div>
 
-<footer>
-  <div class="container foot">
-    <small>© <span id="y"></span> Frasheri Trasporti e Montaggi • Abruzzo</small>
-    <small><a href="contatti.html">Contatti</a> • <a href="chi-siamo.html">Chi siamo</a></small>
-  </div>
-</footer>
+            <div class="form__row">
+              <label class="field">
+                <span class="field__label">Zona (ritiro)</span>
+                <input class="field__input" type="text" name="zona" placeholder="Es. Pescara" autocomplete="address-level2" />
+              </label>
 
-<!-- Mobile Bottom Bar (WhatsApp-first) -->
-<div class="mobile-bar" aria-label="Contatti rapidi mobile">
-  <div class="inner">
+              <label class="field">
+                <span class="field__label">Destinazione</span>
+                <input class="field__input" type="text" name="destinazione" placeholder="Es. Chieti" />
+              </label>
+            </div>
 
-    <a class="wa"
-       href="https://wa.me/39XXXXXXXXXX"
-       target="_blank" rel="noopener">
+            <div class="form__row">
+              <label class="field">
+                <span class="field__label">Data (opzionale)</span>
+                <input class="field__input" type="date" name="data" />
+              </label>
 
-      <img src="assets/img/whatsapp.svg" class="icon" alt="">
+              <label class="field">
+                <span class="field__label">Telefono (opzionale)</span>
+                <input class="field__input" type="tel" name="telefono" placeholder="Per ricontatto" autocomplete="tel" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Descrizione</span>
+              <textarea class="field__input field__textarea" name="descrizione" rows="4" placeholder="Cosa devo trasportare/montare? Misure/quantità se le hai..."></textarea>
+            </label>
+
+            <div class="form__actions">
+              <button class="btn btn--primary btn--lg" type="submit">
+                <img src="assets/whatsapp.svg" alt="" width="20" height="20" />
+                Invia su WhatsApp
+              </button>
+
+              <button class="btn btn--ghost btn--lg" type="button" id="copyBtn">
+                Copia testo
+              </button>
+
+              <a class="btn btn--secondary btn--lg" id="callBtn" href="#">
+                <img src="assets/phone.svg" alt="" width="20" height="20" />
+                Chiama
+              </a>
+            </div>
+
+            <p class="form__hint" id="hint">
+              Suggerimento: su WhatsApp allega 1–3 foto per un preventivo più preciso.
+            </p>
+          </form>
+
+          <aside class="contact">
+            <div class="contact__box">
+              <h3 class="contact__title">Contatti</h3>
+              <p class="contact__text">
+                Email: <a href="mailto:info@frasheri.it">info@frasheri.it</a><br />
+                Abruzzo (PE/CH) • Fuori regione su richiesta
+              </p>
+
+              <div class="contact__cta">
+                <a class="btn btn--primary" id="sideWhatsApp" href="#">
+                  <img src="assets/whatsapp.svg" alt="" width="18" height="18" />
+                  WhatsApp
+                </a>
+                <a class="btn btn--ghost" id="sidePhone" href="#">
+                  <img src="assets/phone.svg" alt="" width="18" height="18" />
+                  Chiama
+                </a>
+              </div>
+            </div>
+
+            <div class="contact__box contact__box--note">
+              <h3 class="contact__title">Cosa inviare su WhatsApp</h3>
+              <ul class="list">
+                <li>Zona ritiro + destinazione</li>
+                <li>Servizio richiesto</li>
+                <li>Foto (se possibile)</li>
+                <li>Data desiderata</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom bar mobile -->
+  <div class="bottom-bar" aria-label="Azioni rapide">
+    <a class="bottom-bar__btn bottom-bar__btn--primary" id="bottomWhatsApp" href="#">
+      <img src="assets/whatsapp.svg" alt="" width="18" height="18" />
       WhatsApp
     </a>
-
-    <a class="call" href="tel:+39XXXXXXXXXX">
-
-      <img src="assets/img/phone.svg" class="icon" alt="">
+    <a class="bottom-bar__btn" id="bottomPhone" href="#">
+      <img src="assets/phone.svg" alt="" width="18" height="18" />
       Chiama
     </a>
-
   </div>
-</div>
 
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <strong>Frasheri Trasporti e Montaggi</strong><br />
+        Abruzzo • Pescara • Chieti • Fuori regione su richiesta<br />
+        <a href="mailto:info@frasheri.it">info@frasheri.it</a>
+      </div>
+      <div class="footer__right">
+        <a href="privacy.html">Privacy & Cookie</a><br />
+        <span class="muted">© <span id="year"></span> — P.IVA: ______</span>
+      </div>
+    </div>
+  </footer>
 
-<script src="assets/js/main.js"></script>
-
-<!-- LocalBusiness Schema (SEO + GEO) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Frasheri Trasporti e Montaggi",
-  "url": "https://frasheri.it",
-  "telephone": "+39XXXXXXXXXX",
-  "areaServed": ["Pescara", "Chieti", "Teramo", "L'Aquila", "Abruzzo"],
-  "description": "Montaggi e trasporti professionali in Abruzzo. Preventivo rapido via WhatsApp o telefono.",
-  "sameAs": [],
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "Abruzzo",
-    "addressCountry": "IT"
-  }
-}
-</script>
-
+  <script defer src="main.js"></script>
 </body>
 </html>
