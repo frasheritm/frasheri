@@ -8,7 +8,6 @@ const CONFIG = {
   EMAIL: "info@frasheri.it"
 };
 
-
 function buildWhatsAppLink(message) {
   const base = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
   const text = encodeURIComponent(message);
@@ -36,10 +35,12 @@ function setLink(el, href) {
 function wireQuickLinks() {
   const phoneHref = `tel:${CONFIG.PHONE_NUMBER_TEL}`;
   setLink(document.getElementById("bottomPhone"), phoneHref);
+  setLink(document.getElementById("fabPhone"), phoneHref);
 
   const waHref = buildWhatsAppLink(defaultMessage());
   setLink(document.getElementById("heroWhatsApp"), waHref);
   setLink(document.getElementById("bottomWhatsApp"), waHref);
+  setLink(document.getElementById("fabWhatsApp"), waHref);
 }
 
 function sanitize(value) {
@@ -76,6 +77,7 @@ function buildFormMessage(formData) {
   return lines.join("\n");
 }
 
+/* MENU MOBILE (drawer) */
 function wireMobileMenu() {
   const burger = document.getElementById("burger");
   const drawer = document.getElementById("mobileMenu");
@@ -86,9 +88,14 @@ function wireMobileMenu() {
 
   const open = () => {
     drawer.hidden = false;
-    drawer.classList.add("is-open");
+    drawer.classList.remove("is-open"); // reset
     burger.setAttribute("aria-expanded", "true");
     document.body.classList.add("no-scroll");
+
+    // per far partire l'animazione anche in apertura
+    requestAnimationFrame(() => {
+      drawer.classList.add("is-open");
+    });
   };
 
   const close = () => {
@@ -96,10 +103,9 @@ function wireMobileMenu() {
     burger.setAttribute("aria-expanded", "false");
     document.body.classList.remove("no-scroll");
 
-    // aspetta la fine dell'animazione
     window.setTimeout(() => {
       drawer.hidden = true;
-    }, 230);
+    }, 240);
   };
 
   burger.addEventListener("click", open);
@@ -114,7 +120,6 @@ function wireMobileMenu() {
     if (e.key === "Escape" && !drawer.hidden) close();
   });
 }
-
 
 /* POPUP INFO WhatsApp */
 function wireWhatsAppModal() {
