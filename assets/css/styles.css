@@ -5,7 +5,7 @@
   /* Accent più soft (stessa tinta, meno “sparata”) */
   --accent-rgb: 247,166,0;
   --accent: rgb(var(--accent-rgb));
-  --accent-mid: rgba(var(--accent-rgb), .78);
+  --accent-mid: rgba(var(--accent-rgb), .70);
   --accent-soft: rgba(var(--accent-rgb), .18);
   --accent-border: rgba(var(--accent-rgb), .38);
 
@@ -543,8 +543,8 @@ body.no-scroll{ overflow: hidden; }
 }
 .fab__btn:hover{ transform: translateY(-1px); }
 .fab__btn--wa{
-  background: rgba(var(--accent-rgb), .14);
-  border-color: rgba(var(--accent-rgb), .35);
+  background: rgba(var(--accent-rgb), .45);
+  border-color: rgba(var(--accent-rgb), .70);
 }
 
 /* Desktop */
