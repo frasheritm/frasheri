@@ -3,7 +3,7 @@ const CONFIG = {
   WHATSAPP_NUMBER: "393793399593",
 
   // tel: con + (apre tastiera con numero precompilato)
-  PHONE_NUMBER_TEL: "+39393793399593",
+  PHONE_NUMBER_TEL: "+393793399593",
 
   EMAIL: "info@frasheri.it"
 };
