@@ -1,9 +1,9 @@
 const CONFIG = {
   // SOLO numeri, senza +, spazi o trattini. Es: 393331234567
-  WHATSAPP_NUMBER: "39XXXXXXXXXX",
+  WHATSAPP_NUMBER: "393793399593",
 
   // tel: con + (apre tastiera con numero precompilato)
-  PHONE_NUMBER_TEL: "+39XXXXXXXXXX",
+  PHONE_NUMBER_TEL: "+39393793399593",
 
   EMAIL: "info@frasheri.it"
 };
@@ -72,7 +72,7 @@ function buildFormMessage(formData) {
   lines.push(`• Telefono: ${telefono || "-"}`);
   lines.push(`• Dettagli: ${descrizione || "-"}`);
   lines.push("");
-  lines.push("Posso allegare foto in chat.");
+  lines.push("Foto allegate.");
 
   return lines.join("\n");
 }
