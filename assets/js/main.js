@@ -173,14 +173,20 @@ function wireQuoteForm() {
   });
 
   emailBtn?.addEventListener("click", () => {
-    const data = new FormData(form);
-    const message = buildFormMessage(data);
+  // forza validazione anche se il bottone è type="button"
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
-    const subject = "Richiesta preventivo - Frasheri";
-    const mailto = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  const data = new FormData(form);
+  const message = buildFormMessage(data);
 
-    window.location.href = mailto;
-  });
+  const subject = "Richiesta preventivo - Frasheri";
+  const mailto = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+  window.location.href = mailto;
+});
 }
 
 document.addEventListener("DOMContentLoaded", () => {
