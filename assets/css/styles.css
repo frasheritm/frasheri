@@ -562,7 +562,7 @@ body.no-scroll{ overflow: hidden; }
 }
 .fab__btn:hover{ transform: translateY(-1px); }
 .fab__btn--wa{
-  background: rgba(var(--accent-rgb), .60);
+  background: rgba(var(--accent-rgb), .75);
   border-color: rgba(var(--accent-rgb), .90);
 }
 
