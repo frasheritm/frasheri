@@ -562,8 +562,8 @@ body.no-scroll{ overflow: hidden; }
 }
 .fab__btn:hover{ transform: translateY(-1px); }
 .fab__btn--wa{
-  background: rgba(var(--accent-rgb), .45);
-  border-color: rgba(var(--accent-rgb), .70);
+  background: rgba(var(--accent-rgb), .60);
+  border-color: rgba(var(--accent-rgb), .90);
 }
 
 /* Desktop */
