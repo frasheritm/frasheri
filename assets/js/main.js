@@ -198,3 +198,75 @@ document.addEventListener("DOMContentLoaded", () => {
   wireQuickLinks();
   wireQuoteForm();
 });
+
+// --- Lightbox galleria ---
+(function () {
+  const items = Array.from(document.querySelectorAll('.gallery__item img'));
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox || items.length === 0) return;
+
+  const lightboxImg = document.getElementById('lightboxImg');
+  const counter = document.getElementById('lightboxCounter');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateImage() {
+    const img = items[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    counter.textContent = (currentIndex + 1) + ' / ' + items.length;
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateImage();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateImage();
+  }
+
+  items.forEach((img, index) => {
+    img.parentElement.addEventListener('click', () => openLightbox(index));
+  });
+
+  btnClose.addEventListener('click', closeLightbox);
+  btnNext.addEventListener('click', showNext);
+  btnPrev.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  lightbox.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) diff > 0 ? showPrev() : showNext();
+  });
+})();
